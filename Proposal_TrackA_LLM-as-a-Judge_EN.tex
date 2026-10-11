@@ -1,0 +1,115 @@
+\documentclass[10pt]{article}
+\usepackage[margin=0.62in]{geometry}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{xurl}
+\hypersetup{colorlinks=true, urlcolor=blue, linkcolor=black}
+\urlstyle{same}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2pt}
+\setlist{nosep,leftmargin=*}
+\titlespacing*{\section}{0pt}{5pt}{2pt}
+\titlespacing*{\subsection}{0pt}{3pt}{1pt}
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.4em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.4em}{}
+
+\begin{document}
+
+\begin{center}
+{\large\bfseries Project Proposal}\\[-1pt]
+\end{center}
+
+\section{Project Title}
+\textbf{How Reliable Are LLM Judges? A Survey of Evaluation Protocols, Biases, and Validation Methods}
+
+\textbf{Project Track:} Track A --- Survey
+
+\section{Team Members \& Responsibilities}
+\begin{tabularx}{\linewidth}{@{}lX@{}}
+\toprule
+\textbf{Member} & \textbf{Responsibilities}\\
+\midrule
+2310412 Hao Purui & Research scope, core questions, evaluation protocols, and taxonomy.\\
+2311871 Liu Xincheng & Evaluation biases, reliability improvements, open problems, and future directions.\\
+\bottomrule
+\end{tabularx}
+
+Both members will jointly verify the literature, integrate and proofread the report, and prepare the final presentation.
+
+\section{Background \& Motivation}
+Large language models are widely used for dialogue, open-domain question answering, summarization, and instruction following. Metrics such as BLEU and ROUGE are insufficient for open-ended responses, while human evaluation is costly and subject to annotator disagreement.
+
+LLM-as-a-Judge uses a large language model to score, compare, rank, or explain model outputs. However, judges may be affected by response position, length, style, self-preference, and prompt formulation, reducing agreement with human judgments or changing model rankings.
+
+Unlike broad existing surveys, this project focuses on judge reliability through the framework of ``evaluation protocols---evaluation bases---validation and improvements.'' It distinguishes agreement, consistency, and validity and emphasizes when judges genuinely reflect response quality.
+
+\section{Problem Definition / Research Questions}
+\subsection{Research Scope}
+The project covers LLM evaluation of open-ended generation, dialogue, and question answering, including pairwise/listwise comparison and agreement with human judgments. BLEU, ROUGE, BERTScore, BLEURT, and BARTScore are background baselines; other NLP metrics and RLHF reward-model training are out of scope.
+
+\subsection{Research Questions}
+\begin{enumerate}
+\item How do Point-wise, Pair-wise, and List-wise evaluation protocols, as well as Reference-based, Reference-free, Evidence-based, and Rubric-based evaluation bases, differ in their objectives, output formats, and applicable scenarios?
+\item What systematic biases and failure modes affect LLM judges? How do position bias, length/style bias, self-preference, and scoring instability affect evaluation results?
+\item Can response-order swapping, repeated sampling and aggregation, Judge Ensemble, human calibration, and external evidence improve evaluation reliability?
+\item How should agreement, consistency, and validity be combined to determine whether an LLM judge genuinely reflects response quality, while balancing cost, interpretability, and reproducibility?
+\end{enumerate}
+
+\subsection{Preliminary Taxonomy}
+The project will develop a three-level taxonomy:
+\begin{enumerate}
+\item \textbf{Evaluation protocols:} Point-wise, Pair-wise, and List-wise evaluation;
+\item \textbf{Evaluation bases:} Reference-based, Reference-free, Evidence-based, and Rubric-based evaluation;
+\item \textbf{Validation and reliability improvements:} human agreement, test-retest consistency, objective-correctness benchmarks, prompt/rubric design, sampling and aggregation, Judge Ensemble, human calibration, and external evidence.
+\end{enumerate}
+The comparison will distinguish \textbf{agreement}, \textbf{consistency}, and \textbf{validity}, while considering task type, references, evaluation dimensions, bias, cost, interpretability, and cross-task generalization. Consistency does not guarantee validity: a judge may consistently prefer a format without recognizing answer quality.
+
+\section{Expected Outcomes}
+\begin{enumerate}
+\item Collect and verify at least 20 relevant papers and establish the three-level taxonomy.
+\item Create a comparison table covering the strengths, limitations, and use cases of protocols and improvements.
+\item Summarize position, length/style, self-preference, and prompt-sensitivity biases, and compare agreement, consistency, and validity.
+\item Analyze protocol standardization, bias calibration, objective correctness, multilingual evaluation, and reproducibility, and propose future directions.
+\end{enumerate}
+
+\section{Project Timeline}
+\begin{tabularx}{\linewidth}{@{}lX@{}}
+\toprule
+\textbf{Stage} & \textbf{Planned Work}\\
+\midrule
+Before proposal submission & Finalize the scope, research questions, responsibilities, and initial literature verification.\\
+Weeks 1--4 after submission & Screen at least 25 candidate papers and select 20 core papers; refine the taxonomy, comparison table, and interim results.\\
+After the midterm milestone & Complete the review, comparison, open-problem analysis, report, slides, and contribution statement.\\
+\bottomrule
+\end{tabularx}
+
+The dates of the midterm milestone and final submission will follow the instructor's later announcement.
+
+\section*{References}
+\small
+The following references have been verified through ACL Anthology, arXiv, OpenReview, PMLR, or official conference pages. The final report will cite at least 20 papers, with recent work from 2024--2026 forming the main body of the review.
+\begin{enumerate}[leftmargin=*,itemsep=0pt,topsep=1pt]
+\item Lianmin Zheng et al. 2023. \href{https://arxiv.org/abs/2306.05685}{\textit{Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena}}. NeurIPS 2023, Datasets and Benchmarks Track.
+\item Yang Liu, Dan Iter, Yichong Xu, Shuohang Wang, Ruochen Xu, and Chenguang Zhu. 2023. \href{https://aclanthology.org/2023.emnlp-main.153/}{\textit{G-Eval: NLG Evaluation using GPT-4 with Better Human Alignment}}. EMNLP 2023.
+\item Jiawei Gu et al. 2024. \href{https://arxiv.org/abs/2411.15594}{\textit{A Survey on LLM-as-a-Judge}}. arXiv:2411.15594.
+\item Peiyi Wang et al. 2024. \href{https://aclanthology.org/2024.acl-long.511/}{\textit{Large Language Models are not Fair Evaluators}}. ACL 2024.
+\item Guiming Hardy Chen, Shunian Chen, Ziche Liu, Feng Jiang, and Benyou Wang. 2024. \href{https://aclanthology.org/2024.emnlp-main.474/}{\textit{Humans or LLMs as the Judge? A Study on Judgement Bias}}. EMNLP 2024.
+\item Wei-Lin Chiang et al. 2024. \href{https://proceedings.mlr.press/v235/chiang24b.html}{\textit{Chatbot Arena: An Open Platform for Evaluating LLMs by Human Preference}}. ICML 2024, PMLR 235, 8359--8388.
+\item Sijun Tan et al. 2025. \href{https://arxiv.org/abs/2410.12784}{\textit{JudgeBench: A Benchmark for Evaluating LLM-based Judges}}. ICLR 2025.
+\item Anna Bavaresco et al. 2025. \href{https://aclanthology.org/2025.acl-short.20/}{\textit{LLMs instead of Human Judges? A Large Scale Empirical Study across 20 NLP Evaluation Tasks}}. ACL 2025.
+\item Lin Shi, Chiyu Ma, Wenhua Liang, Xingjian Diao, Weicheng Ma, and Soroush Vosoughi. 2025. \href{https://aclanthology.org/2025.ijcnlp-long.18/}{\textit{Judging the Judges: A Systematic Study of Position Bias in LLM-as-a-Judge}}. IJCNLP-AACL 2025.
+\item Hui Huang et al. 2025. \href{https://aclanthology.org/2025.findings-acl.306/}{\textit{An Empirical Study of LLM-as-a-Judge for LLM Evaluation: Fine-tuned Judge Model is not a General Substitute for GPT-4}}. Findings of ACL 2025.
+\item Aman Singh Thakur et al. 2025. \href{https://aclanthology.org/2025.gem-1.33/}{\textit{Judging the Judges: Evaluating Alignment and Vulnerabilities in LLMs-as-Judges}}. GEM 2025.
+\item Yilun Zhou et al. 2025. \href{https://arxiv.org/abs/2504.15253}{\textit{Evaluating Judges as Evaluators: The JETTS Benchmark of LLM-as-Judges as Test-Time Scaling Evaluators}}. ICML 2025.
+\item Yusuke Yamauchi, Taro Yano, and Masafumi Oyamada. 2026. \href{https://aclanthology.org/2026.gem-main.19/}{\textit{An Empirical Study of LLM-as-a-Judge: How Design Choices Impact Evaluation Reliability}}. GEM 2026.
+\item Zhengyu Hu, Linxin Song, Jieyu Zhang, Zheyuan Xiao, Tianfu Wang, Zhengyu Chen, Nicholas Jing Yuan, Jianxun Lian, Kaize Ding, and Hui Xiong. 2025. \href{https://aclanthology.org/2025.findings-emnlp.358/}{\textit{Explaining Length Bias in LLM-Based Preference Evaluations}}. Findings of EMNLP 2025, 6763--6794.
+\item Pat Verga, Sebastian Hofstätter, Sophia Althammer, Yixuan Su, Aleksandra Piktus, Arkady Arkhangorodsky, Minjie Xu, Naomi White, and Patrick Lewis. 2024. \href{https://arxiv.org/abs/2404.18796}{\textit{Replacing Judges with Juries: Evaluating LLM Generations with a Panel of Diverse Models}}. arXiv preprint, arXiv:2404.18796.
+\end{enumerate}
+
+\end{document}
